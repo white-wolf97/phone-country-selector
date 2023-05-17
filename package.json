@@ -1,0 +1,19 @@
+{
+  "name": "@practiauy/phone-country-selector",
+  "version": "0.0.1",
+  "description": "A simple selector that shows the country flag and returns the phone code for the selected one",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/white-wolf97/phone-country-selector.git"
+  },
+  "author": "Practia Uruguay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/white-wolf97/phone-country-selector/issues"
+  },
+  "homepage": "https://github.com/white-wolf97/phone-country-selector#readme"
+}
