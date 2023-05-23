@@ -15,18 +15,23 @@ import { PropTypes } from "prop-types";
  * @param {string} props.countries[].flagUrl - The URL of the country's flag.
  * @param {string} props.countries[].phonePrefix - The phone prefix of the country.
  * @param {number} props.countryId - The ID of the selected country.
+ * @param {string} props.defaultCountryByName - The name of the default country used when the countryId is not provided.
  * @param {Function} props.setCountryId - A function that sets the countryId state.
  * @param {Function} props.onSelect - A function that is called when a country is selected.
  * @param {string} props.dataTestId - The test ID for the component.
  * @param {Object} props.textFieldProps - Additional properties for the TextField component.
+ * @param {Object} props.buttonProps - Additional properties for the Button component.
  */
 const PhoneCountrySelector = ({
   countries,
   countryId,
+  defaultCountryByName, 
   setCountryId,
   onSelect,
   dataTestId,
-  textFieldProps
+  textFieldProps,
+  buttonProps, 
+  ...rest
 }) => {
   const [showAllCountries, setShowAllCountries] = useState(false);
   const [open, setOpen] = useState(false);
@@ -44,14 +49,15 @@ const PhoneCountrySelector = ({
     }
   };
 
+  const handleInputBlur = () => { setOpen(false); setShowAllCountries(false); };
+
   useEffect(() => {
     if (!countryId) {
-      // default to Uruguay
-      const idUruguay = countries.find(
+      const idDefault = countries.find(
         (country) =>
-          country.name.trim().toLowerCase() === "uruguay",
+          country.name.trim().toLowerCase() === defaultCountryByName.trim().toLowerCase(),
       )?.id;
-      if (idUruguay) setCountryId(idUruguay);
+      if (idDefault) setCountryId(idDefault);
     }
   }, []);
 
@@ -68,7 +74,6 @@ const PhoneCountrySelector = ({
             data-testid={dataTestId}
             options={countries}
             open={open}
-            onBlur={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             onClose={() => setOpen(false)}
             value={selectedCountry}
@@ -76,7 +81,7 @@ const PhoneCountrySelector = ({
             isOptionEqualToValue={(option, value) => option.id === value.id}
             onChange={handleChangeCountry}
             renderInput={(params) => (
-              <TextField {...params} {...textFieldProps} />
+              <TextField {...params} {...textFieldProps} autoFocus onBlur={handleInputBlur}/>            
             )}
             renderOption={(props, option) => {
               return (
@@ -87,10 +92,11 @@ const PhoneCountrySelector = ({
                 </li>
               );
             }}
+            {...rest}
           />
         </>
       ) : (
-        <Button variant="secondary" onClick={handleClickSelectNewCountry}>
+          <Button {...buttonProps} onClick={handleClickSelectNewCountry}>
           <div className="d-flex">
             <img
               className="country-flag"
@@ -109,15 +115,18 @@ const PhoneCountrySelector = ({
 PhoneCountrySelector.propTypes = {
   countries: PropTypes.array.isRequired,
   countryId: PropTypes.number,
+  defaultCountryByName: PropTypes.string.isRequired,
   setCountryId: PropTypes.func.isRequired,
   onSelect: PropTypes.func,
   dataTestId: PropTypes.string,
   textFieldProps: PropTypes.object,
+  buttonProps: PropTypes.object,
 };
 
 PhoneCountrySelector.defaultProps = {
   onSelect: () => { },
   dataTestId: "phone-country-selector",
+  defaultCountryByName: "Uruguay",
   textFieldProps: {
     size: "small",
     fullWidth: true,
