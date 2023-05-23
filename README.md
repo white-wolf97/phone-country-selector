@@ -15,6 +15,8 @@
 
 ## Usage
 
+You should bring your own array of countries and pass it to the `PhoneCountrySelector` component as a prop.
+
 ## Contributions
 
 ## Tests
