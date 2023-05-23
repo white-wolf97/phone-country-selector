@@ -1,6 +1,6 @@
 {
   "name": "@practiauy/phone-country-selector",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A simple selector that shows the country flag and returns the phone code for the selected one",
   "main": "dist/index.js",
   "scripts": {
