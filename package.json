@@ -1,6 +1,6 @@
 {
   "name": "@practiauy/phone-country-selector",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple selector that shows the country flag and returns the phone code for the selected one",
   "main": "dist/index.js",
   "scripts": {
@@ -22,9 +22,9 @@
     "@mui/material": "^5.13.1",
     "bootstrap": "^5.2.3",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
+    "react": "^17.0.2",
     "react-bootstrap": "^2.7.4",
-    "react-dom": "^18.2.0"
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.21.8",
@@ -39,9 +39,9 @@
     "babel-preset-react": "^6.24.1",
     "bootstrap": "^5.2.3",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
+    "react": "^17.0.2",
     "react-bootstrap": "^2.7.4",
-    "react-dom": "^18.2.0",
+    "react-dom": "^17.0.2",
     "webpack": "^5.83.0",
     "webpack-cli": "^5.1.1"
   }

@@ -59,7 +59,7 @@ const PhoneCountrySelector = ({
       )?.id;
       if (idDefault) setCountryId(idDefault);
     }
-  }, []);
+  }, [countries]);
 
   const selectedCountry = countries.find((country) => country.id === countryId) ?? {};
 
