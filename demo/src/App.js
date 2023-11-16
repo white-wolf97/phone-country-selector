@@ -23,7 +23,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <PhoneCountrySelector
-          countries={countries}
           countryId={countryId}
           setCountryId={setCountryId}
         />

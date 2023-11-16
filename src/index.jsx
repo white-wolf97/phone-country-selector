@@ -2,6 +2,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import { Button } from 'react-bootstrap';
 import React, { useEffect, useState } from "react";
 import { PropTypes } from "prop-types";
+import { defaultData } from "./defaultData";
 
 
 /**
@@ -9,7 +10,7 @@ import { PropTypes } from "prop-types";
  *
  * @component
  * @param {Object} props
- * @param {Object[]} props.countries - Required. An array of objects each representing a country.
+ * @param {Object[]} props.countries - An array of objects each representing a country.
  * @param {number} props.countries[].id - The unique ID of the country.
  * @param {string} props.countries[].name - The name of the country.
  * @param {string} props.countries[].flagUrl - The URL of the country's flag.
@@ -23,7 +24,7 @@ import { PropTypes } from "prop-types";
  * @param {Object} props.buttonProps - Additional properties for the Button component.
  */
 const PhoneCountrySelector = ({
-  countries,
+  countries = defaultData,
   countryId,
   defaultCountryByName, 
   setCountryId,
